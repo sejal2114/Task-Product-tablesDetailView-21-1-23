@@ -39,9 +39,8 @@ class TableViewController: UIViewController {
                          
                 let decoder = JSONDecoder()
                 let root: Roots = try! decoder.decode(Roots.self, from: data!)
-                
                 self.product = root.products
-                
+        
                 DispatchQueue.main.async {
                     self.productTableviewcontroller.reloadData()
                 }
@@ -52,7 +51,6 @@ class TableViewController: UIViewController {
         
     }
 
-
 extension TableViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         product.count
@@ -60,7 +58,6 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedProduct = product[indexPath.row]
-        
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
@@ -77,11 +74,9 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
         cell.decriptionLabel.text = product.description
         cell.priceLabel.text = "\(product.price)"
         cell.brandLabel.text = product.brand
-        
         return cell
     }
-    
-    
+
 }
 
         
